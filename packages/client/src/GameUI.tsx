@@ -23,6 +23,8 @@ export function GameUI({
   liveState: LiveState;
   gameConfig: GameConfig;
 }) {
+  const COMPETITION_END_DATE = new Date("2025-06-01T21:00:00-07:00");
+
   const { width } = useWindowSize();
   const isMobile = width < 768;
 
@@ -194,7 +196,13 @@ export function GameUI({
 
                 <Box mt={4} p={3} backgroundColor="#1A1A1A" borderRadius="1px" textAlign="center">
                   <Text fontSize="xl" fontWeight="bold" color="#00E893" fontFamily="monospace">
-                    <Countdown targetDate="2025-06-01T21:00:00-07:00" />
+                    {new Date() < COMPETITION_END_DATE ? (
+                      <Countdown targetDate={COMPETITION_END_DATE.toISOString()} />
+                    ) : (
+                      <Text fontSize="xl" fontWeight="bold" color="#FF5700" fontFamily="monospace">
+                        COMPETITION ENDED
+                      </Text>
+                    )}
                   </Text>
                 </Box>
               </Box>
