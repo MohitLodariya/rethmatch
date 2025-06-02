@@ -43,7 +43,7 @@ export function parseSyncStateGivenTables(state: State<typeof config>) {
 
   const highScores = new Map<bigint, BigintMinHeap>(); // Will be put into GameState.
   Object.values(getRecords({ state, table: config.tables.Player })).forEach((record) => {
-    highScores.set(record.entityId, record.highScores);
+    if (record.highScores.length !== 0) highScores.set(record.entityId, record.highScores);
   });
   const usernames = new Map<bigint, string | undefined>(); // Will be put into GameState.
   Object.values(getRecords({ state, table: config.tables.UsernameOffchain })).forEach((record) => {
