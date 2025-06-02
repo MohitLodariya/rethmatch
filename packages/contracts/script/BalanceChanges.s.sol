@@ -16,7 +16,7 @@ contract BalanceChanges is Script {
         StoreSwitch.setStoreAddress(worldAddress); // Must be called to use stores directly in scripts.
 
         uint96 newMaxFoodMass = 256e18 * 3;
-        uint96 newMinFoodMass = 32e18 * 3;
+        uint96 newMinFoodMass = 32e18 * 4;
         uint64 newLineJumpDecayFactor = 0.75e18;
 
         require(
